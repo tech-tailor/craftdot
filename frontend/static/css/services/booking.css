@@ -1,0 +1,29 @@
+/* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+/* Sections */
+section {
+    padding: 20px;
+}
+
+.services {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 20px 0 0 0;
+
+}

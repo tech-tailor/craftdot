@@ -1,0 +1,50 @@
+/* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin: 80px;
+
+
+}
+
+/* Sections */
+section {
+    padding: 20px;
+}
+
+.bar-logo {
+    display: inline-block;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.task-location {
+    border: 1px solid #ccc;
+    padding: 10px 0 20px 0;
+    margin: 20px 0 0 0;
+}
+
+.task-option {
+    border: 1px solid #ccc;
+    padding: 10px 0 0 0;
+    margin: 20px 0 0 0;
+}
+
+.task-details {
+    border: 1px solid #ccc;
+    padding: 10px 0 0 0;
+    margin: 20px 0 0 0;
+}
+

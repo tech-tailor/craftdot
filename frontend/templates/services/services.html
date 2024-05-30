@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services/services.css') }}">
+{% endblock %}
+
+{% block title %}Services{% endblock %}
+
+{% block headers %} {% endblock %}
+
+
+
+{% block content %}
+<main>
+  <section class="services container">
+    <h1>Services offered</h1>
+    <div class="card-group" id="service-card">
+      <!-- Sample html for the service card
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/tailor.jpeg') }}" class="card-img-top" alt="...">
+        <div class="card-footer">
+          <p class="text-body-secondary text-bold">{{ service }}</p>
+        </div>
+      </div>
+      -->
+      <!-- Services will be updated dynamically -->
+    </div>
+    
+  </section>
+  <!-- Send the services to Jquery for filtering -->
+  <script id="services" type="application/json">{{ services | tojson }}</script>
+</main>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/services/services.js') }}"></script>
+{% endblock %}
+
+

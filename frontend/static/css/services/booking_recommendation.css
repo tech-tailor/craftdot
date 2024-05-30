@@ -1,0 +1,47 @@
+/* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin: 80px;
+
+
+}
+
+/* Sections */
+section {
+    padding: 20px;
+}
+
+.crafter-board {
+    border: 1px solid #ccc;
+}
+
+.container1 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+.name {
+    font-weight: bold;
+    border: 1px solid #ccc;
+}

@@ -1,0 +1,109 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services/booking_details.css') }}">
+{% endblock %}
+
+{% block title %}Booking{% endblock %}
+{% block header %}{% endblock %}
+
+{% block flashmessage %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% block content %}
+<main class="main">
+  <form class="col-12" role="submit" method="post" action="/services/booking/recommendation/{{ service_id }}">
+    <div class="bar-logo">
+      <img src="{{ url_for('static', filename='favicon.ico')}}" alt="">
+      <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar bg-primary" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <h3 class="task-text">{{ service_name }}</h3>
+
+    <div>Tell us about your task, we use this to show you taskers in your area</div>
+
+    <div class="task-location">
+      <p class="bold">Task location</p>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <select id="inputState" name="state" class="form-select">
+          <option selected>Choose...</option>
+          {% if states %}
+          {% for state in states %}
+          <option value="{{ state }}">{{ state }}</option>
+          {% endfor %}
+          {% endif %}
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="inputLGA" class="form-label">LGA</label>
+        <select id="inputLGA" name="LGA" class="form-select">
+          <option selected>Choose...</option>
+          <!-- Dynamically update the la options-->
+        </select>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
+      </div>
+    </div>
+
+    <div class="task-option col-12">
+      <p class="bold">Task option</p>
+      <p>How big is your task?</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="Small - Est. 1hour" name="size" id="small-task">
+        <label class="form-check-label" for="small-task">
+          Small - Est. 1hour
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" value="Medium - Est. 2-3 hours" type="radio" name="size" id="medium-task" checked>
+        <label class="form-check-label" for="medium-task">
+          Medium - Est. 2-3 hours
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" value="Large - Est. 4 hours above" type="radio" name="size" id="large-task">
+        <label class="form-check-label" for="large-task">
+          Large - Est. 4 hours above
+        </label>
+      </div>
+    </div>
+
+    <div class="task-description">
+      <p class="bold">Tell us the details of your task</p>
+      <p>Start the conversation by telling the tasker what you need to get done
+        this helps us show you qualified and available crafter
+        Dont worry, you an edit this later
+      </p>
+      <div class="col-12">
+        
+        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Write what you want the tasker to do for you"></textarea>
+      </div>
+      <p>If you need two or more crafter, post additional task for each tasker needed</p>
+    </div>
+    <input type="text" name="serivce_name" value="{{serivce_name}}" hidden>
+    <button class="btn btn-outline-primary text-center m-4" id="available-crafter" type="submit">See available crafter</button>
+  </form>
+
+
+</main>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script id="LGAData" type="application/json">{{ lga_data | tojson }}</script>
+<script src="{{ url_for('static', filename='js/services/booking_details.js') }}"></script>
+{% endblock %}
+

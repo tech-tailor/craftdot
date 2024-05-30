@@ -1,0 +1,48 @@
+/* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+/* Sections */
+section {
+    padding: 20px;
+}
+
+.hero-video {
+    position: relative;
+    display: inline-block;
+    text-align: center; 
+}
+.hero-video button{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.service-container {
+    align-items: center;
+    
+    text-align: center;
+    margin: 10px;
+}
+
+
+
+.rating {
+    color: gold;
+}
+

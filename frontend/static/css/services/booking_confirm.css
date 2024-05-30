@@ -1,0 +1,42 @@
+/* Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin: 80px;
+
+
+}
+
+/* Sections */
+section {
+    padding: 20px;
+}
+
+.card-header {
+    
+    border: 1px solid #ccc;
+    align-items: center;
+}
+
+.card-header h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

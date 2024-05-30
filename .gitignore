@@ -1,0 +1,28 @@
+# Ignore Python bytecode files
+*.pyc
+*/__pycache__
+*__pycache__
+
+# Ignore virtual environment directories (if you're using virtualenv or venv)
+venv/
+env/
+.env/
+.venv/
+frontend/.env
+craftdot/frontend/.env
+
+# Ignore IDE and editor-specific files
+.idea/
+.vscode/
+
+# Ignore log files and database files
+*.log
+*.db
+
+
+# Some server_provision data
+
+gunicorn_api.log
+gunicorn_frontend.log
+craftdot.db
+server_provision/inventory

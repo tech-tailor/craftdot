@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth/register.css') }}">
+{% endblock %}
+
+{% block header %} {% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block headers %} {% endblock %}
+
+{% block content %}
+
+
+<main>
+  <section>
+    
+
+    <p class="message"></p>
+    <div class="container mb-4 login-container">
+      <div class="row justify-content-center mt-2">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4>Signup</h4>
+              <!-- Element to display validation message -->
+              <div id="messageError" class="error-message" style="display: none;"></div>
+            </div>
+            <div class="card-body">
+              <form id="signupForm" method="post">
+                <div class="form-group">
+                  <label for="phonenumber">Phonenumber</label>
+                  <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter phonenumber">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
+                </div>
+                <button type="submit" id="signup" class="btn btn-outline-info mt-3">Signup</button>
+              </form>
+              <div class="mt-3 text-center"><p>Already have an account? <a href="{{ url_for('auth.login')}}"><button class="btn btn-outline-info">Signin</button></a></p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="otpModal" tabindex="-1" role="dialog" aria-labelledby="otpModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="otpModalLabel">Enter OTP</h5>
+            <!-- Element to display validation message -->
+            <p id="otpMSG" class="msg-otp" style="display: none;"></p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="otpForm" method="post">
+              <div class="form-group">
+                <label for="otpInput">OTP:</label>
+                <input type="text" class="form-control" id="otpInput" name="otpInput">
+              </div>
+              <!-- You can add more fields here if needed -->
+              <button type="submit" class="btn btn-primary">Submit OTP</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+ 
+
+  
+</main>
+{% endblock %}
+
+{% block footer %} {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/auth/register.js') }}"></script>
+{% endblock %}
+
+

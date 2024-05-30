@@ -1,0 +1,123 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services/booking_confirm.css') }}">
+{% endblock %}
+
+{% block title %}Booking Confirm{% endblock %}
+{% block header %}{% endblock %}
+
+{% block flashmessage %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% block content %}
+<main class="main">
+  <section>
+    <form id="bookingForm" method="post" action="#">
+      <div class="card-header">
+        <h4 class="text-center">{{ booking.service_name}} </h4>
+        <img src="{{ booking.artisan_profile_picture}}" alt="{{ booking.artisan_name }}">
+        <p>{{ booking.artisan_name }}</p>
+        <p></p>
+      </div>
+      <div class="mt-2">
+        <p>{{ booking.date}} at {{ booking.time}}</p>
+        <p>2 HOUR MINIMUM</p>
+        <p>{{ booking.address}}, {{booking.LGA}}, {{ booking.state }}</p>
+        <p>{{ booking.size }}</p>
+      </div>
+      <div class="col-12">
+        <p>Your task details</p>
+        <textarea class="form-control" name="description" id="taskDescription" rows="5" maxlength="100" aria-valuenow="hhhhh" spellcheck="true" ></textarea>
+      </div>
+      <div>
+        <h5>Price Details</h5>
+        <p>Hourly Rate #{{ booking.artisan_price}}/hr </p>
+        <p>You may see a temporary hold on your payment method in the amount of your Tasker's hourly rate of #{{ booking.artisan_price}}. You can cancel at any time. Tasks cancelled less than 24 hours before the start time may be billed a cancellation fee of one hour. Tasks have a one-hour minimum.</p>
+        <p>Please follow all public health regulations in your area. Learn more.</p>
+      </div>
+      <div>
+        <h5>Payment Method</h5>
+        <div class="task-option col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="Online payment at job completion" name="payment_type" id="paymentType" checked>
+            <label class="form-check-label" for="payment_type">
+              Online payment
+            </label>
+            <p><small>Pay at job completion</small></p>
+            <p><small>Get 10% of your total payment when you pay online</small></p>
+            <p><small>Pay #3000 instead of  <strike class="text-bold text-danger">#{{ booking.artisan_price }}</strike> when you pay online</small></p>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="Cash payment at job completion" type="radio" name="payment_type" id="paymentType">
+            <label class="form-check-label" for="payment_type">
+              Cash payment at job completion
+            </label>
+            <p><small>Pay at job completion</small></p>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Confirm and Chat
+      </button>
+      <p>Don’t worry, you won’t be billed until your task is complete. Once confirmed, you can chat with your Tasker to update the details.</p>
+    </form>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog .modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="" alt="" id="arisanImage" class="artisan-image">
+          <h1 class="modal-title fs-5 headerTexts" id="staticBackdropLabel headerText">
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="recaptcha" method="post" action="/services/book/task">
+          <div class="modal-body" id="modalBodyContent"><br/>
+            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key}}"></div>
+            <br/>
+            <!-- Send the datas to the backend for booking processing-->
+            <input type="text" name="service_id" value="{{ service_id}}" hidden>
+            <input type="text" name="artisan_id" value="{{ booking.artisan_id}}" hidden>
+            <input type="text" name="job_date" value="{{ booking.date}}" hidden>
+            <input type="text" name="job_time" value="{{ booking.time}}" hidden>
+            <input type="text" name="job_price" value="{{ booking.artisan_price }}" hidden>
+            <input type="text" name="job_address" value="{{ booking.address}}" hidden>
+            <input type="text" name="job_state" value="{{ booking.state}}" hidden>
+            <input type="text" name="job_LGA" value="{{ booking.LGA}}" hidden>
+            <input type="text" name="job_size" value="{{ booking.size}}" hidden>
+            <input type="text" name="job_description" value="{{ booking.description}}" hidden>
+            <!-- This psyment type is dynamically updated from jquery-->
+            <input id="thePaymentType" type="text" name="payment_type" hidden>
+            <input type="submit" value="Submit" class="btn btn-primary text-center">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+</main>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<!-- Embedding data in a script tag as JSON -->
+<script id="descriptionForbooking">"{{ booking.description }}"</script>
+<script src="{{ url_for('static', filename='js/services/booking_confirm.js') }}"></script>
+<!-- Google recaptcha script-->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
